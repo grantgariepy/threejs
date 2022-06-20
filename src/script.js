@@ -2,6 +2,7 @@ import './style.css'
 import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import * as dat from 'dat.gui'
+import { Color } from 'three';
 
 
 // texture loader
@@ -18,7 +19,7 @@ const canvas = document.querySelector('canvas.webgl')
 const scene = new THREE.Scene()
 
 // Objects
-const geometry = new THREE.TorusGeometry( .7, .2, 16, 100 );
+const geometry = new THREE.OctahedronGeometry(.5, 6);
 
 const particlesGeometry = new THREE.BufferGeometry;
 const particlesCount = 5000;
@@ -37,8 +38,10 @@ particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3
 
 // Materials
 
-const material = new THREE.PointsMaterial({
-    size: 0.005
+const material = new THREE.MeshBasicMaterial({
+    wireframe: true,
+    color: 'red',
+    
 })
 const particlesMaterial = new THREE.PointsMaterial({
     size: 0.005,
@@ -48,7 +51,7 @@ const particlesMaterial = new THREE.PointsMaterial({
 
 
 // Mesh
-const sphere = new THREE.Points(geometry,material)
+const sphere = new THREE.Mesh(geometry,material)
 const particlesMesh = new THREE.Points(particlesGeometry, particlesMaterial)
 scene.add(sphere, particlesMesh)
 
@@ -105,7 +108,7 @@ const renderer = new THREE.WebGLRenderer({
 })
 renderer.setSize(sizes.width, sizes.height)
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
-renderer.setClearColor(new THREE.Color('#21282a'), 1)
+renderer.setClearColor(new THREE.Color('#080829'), 1)
 
 // mouse
 
@@ -131,11 +134,13 @@ const tick = () =>
     const elapsedTime = clock.getElapsedTime()
 
     // Update objects
-    sphere.rotation.y = .5 * elapsedTime;
-    particlesMesh.rotation.y = -.1 * elapsedTime;
+    sphere.rotation.y = .25 * elapsedTime;
+    particlesMesh.rotation.z = -.2 * elapsedTime;
+    particlesMesh.rotation.y = -.05 * elapsedTime;
+    particlesMesh.rotation.x = -.01 * elapsedTime;
     if(mouseX > 0){
-     particlesMesh.rotation.x = -mouseY * (elapsedTime * 0.00008)
-     particlesMesh.rotation.y = -mouseX * (elapsedTime * 0.00008)   
+     particlesMesh.rotation.x = mouseY * (elapsedTime * 0.00008)
+     particlesMesh.rotation.y = mouseX * (elapsedTime * 0.00008)   
     }
     
     

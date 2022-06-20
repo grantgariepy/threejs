@@ -1,5 +1,6 @@
 *
 {
+    font-family: 'Michroma', sans-serif;
     margin: 0;
     padding: 0;
 }
@@ -8,7 +9,7 @@ html,
 body
 {
     height: 100vh;
-    font-family: 'Poppins';
+    
     color: white;
 }
 
@@ -35,6 +36,7 @@ body
     width: 100%;
     padding-top: 3em;
     position: relative;
+    padding-bottom: 50px;
 }
 
 .content:before{
@@ -48,10 +50,11 @@ body
 }
 
 h1{
-    font-size: 4rem;
+    font-size: 66px;
     width: 50vw;
     line-height: 97%;
     text-align: right;
+    padding-bottom: 3rem;
 }
 
 h1, p{
@@ -61,6 +64,8 @@ h1, p{
 }
 
 p{
-    font-size: 1.3rem;
-    width: 40vw;
+    padding-top: 1rem;
+    font-size: 24px;
+    width: 25vw;
+    
 }
