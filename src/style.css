@@ -38,6 +38,16 @@ body
     position: relative;
     padding-bottom: 50px;
 }
+@media only screen and (max-width: 670px) {
+    .content {
+      display: flex;
+      flex-direction: column;
+      
+    }
+    h1, p{
+        text-align: center !important;
+    }
+  }
 
 .content:before{
     content: '';
@@ -51,7 +61,6 @@ body
 
 h1{
     font-size: 66px;
-    width: 50vw;
     line-height: 97%;
     text-align: right;
     padding-bottom: 3rem;
@@ -66,6 +75,6 @@ h1, p{
 p{
     padding-top: 1rem;
     font-size: 24px;
-    width: 25vw;
+    
     
 }
